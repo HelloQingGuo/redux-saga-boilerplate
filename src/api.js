@@ -11,7 +11,9 @@ import axios from 'axios';
 //     });
 // }
 
-export function getItem(url) {
+export function getItem(param) {
+  // query builder
+  const url = `https://jsonplaceholder.typicode.com/posts/${param}`;
   return axios.get(url);
 }
 
