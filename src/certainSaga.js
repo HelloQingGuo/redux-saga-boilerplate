@@ -3,7 +3,7 @@ import { receiveItem } from './action';
 import * as Api from './api';
 
 // 1. worker saga
-export function* callRequestItem(action) {
+function* callRequestItem(action) {
   console.log('worker saga');
   try {
     const result = yield call(
@@ -20,7 +20,16 @@ export function* callRequestItem(action) {
 // 2. watcher saga
 // spawn a new task on each Action
 
-export default function* watchCertainModule() {
+export function* watchReqItem() {
   console.log('saga is watching');
   yield takeEvery('REQUEST_ITEM', callRequestItem);
+}
+
+function* callRequestItem2(action) {
+  // ...
+}
+
+export function* watchReqItem2() {
+  console.log('saga is watching 2');
+  yield takeEvery('REQUEST_ITEM_2', callRequestItem2);
 }

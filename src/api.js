@@ -16,18 +16,3 @@ export function getItem(param) {
   const url = `https://jsonplaceholder.typicode.com/posts/${param}`;
   return axios.get(url);
 }
-
-// try {
-//   console.log('async call');
-//
-//     axios.get,
-//     'https://jsonplaceholder.typicode.com',
-//     {
-//       id: action.payload
-//     }
-//
-//   console.log('response', response);
-//   // yield put(receiveCertainData(response));
-// } catch (e) {
-//   console.log('err', e);
-// }
