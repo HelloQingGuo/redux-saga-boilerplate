@@ -2,18 +2,23 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import { connect } from 'react-redux';
 import './App.css';
-import { certainActionCreator } from './action';
+import { requestItem } from './action';
 
 class App extends Component {
   componentDidMount() {
     console.log('did mount');
-    this.props.certainActionCreator();
+    this.props.requestItem(1);
   }
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <img
+            src={logo}
+            className="App-logo"
+            alt="logo"
+            onClick={this.props.requestItem.bind(this, 1)}
+          />
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">
@@ -23,4 +28,4 @@ class App extends Component {
     );
   }
 }
-export default connect(null, { certainActionCreator })(App);
+export default connect(null, { requestItem })(App);

@@ -1,22 +1,16 @@
 import { takeEvery, takeLatest, call, put } from 'redux-saga/effects';
-import axios from 'axios';
+import { receiveItem } from './action';
+import { getItem } from './api';
 
 // 1. worker saga
-export function* certainAsyncCall(action) {
+export function* callRequestItem(action) {
   console.log('worker saga');
-  try {
-    console.log('async call');
-    const response = yield call(
-      axios.get,
-      'https://jsonplaceholder.typicode.com',
-      {
-        id: action.payload
-      }
-    );
-    console.log('response', response);
-  } catch (e) {
-    console.log('err', e);
-  }
+  const result = yield call(
+    getItem,
+    `https://jsonplaceholder.typicode.com/posts/${action.payload}`
+  );
+  console.log('result', result);
+  yield put(receiveItem(result));
 }
 
 // 2. watcher saga
@@ -24,5 +18,5 @@ export function* certainAsyncCall(action) {
 
 export default function* watchCertainModule() {
   console.log('saga is watching');
-  yield takeLatest('certainActionType', certainAsyncCall);
+  yield takeEvery('REQUEST_ITEM', callRequestItem);
 }

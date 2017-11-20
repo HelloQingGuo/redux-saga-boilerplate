@@ -1,11 +1,11 @@
 const INITIAL_STATE = {
-  id: 0
+  item: null
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case 'certainActionType':
-      return { ...state, id: action.payload };
+    case 'RECEIVE_ITEM':
+      return { ...state, item: action.payload.data };
     default:
       return state;
   }
