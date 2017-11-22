@@ -33,3 +33,10 @@ export function* watchReqItem2() {
   console.log('saga is watching 2');
   yield takeEvery('REQUEST_ITEM_2', callRequestItem2);
 }
+
+// export function* watchFoo() {
+//     yield all([
+//       takeEvery('REQUEST_ITEM', callRequestItem);
+//       takeEvery('REQUEST_ITEM_2', callRequestItem2);
+//     ]);
+// }

@@ -13,5 +13,5 @@ export default function* rootSaga() {
 }
 
 // export function* rootSaga() {
-//   yield all([...Object.values(uiSagas), ...Object.values(userSagas)].map(fork));
+//   yield all([uiSagas, userSagas]);
 // }
