@@ -1,17 +1,7 @@
-import { all, fork } from 'redux-saga/effects';
-import * as certainSaga from './certainSaga';
+import { all, fork } from "redux-saga/effects";
+import certainSaga from "./certainSaga";
 
 // single entry point to start all Sagas at once
 export default function* rootSaga() {
-  yield all(
-    [
-      ...Object.values(certainSaga)
-      // ...Object.values(userSagas),
-      // ...Object.values(anotherSagas)
-    ].map(fork)
-  );
+  yield all([certainSaga()]);
 }
-
-// export function* rootSaga() {
-//   yield all([uiSagas, userSagas]);
-// }
